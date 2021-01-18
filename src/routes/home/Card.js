@@ -33,6 +33,7 @@ const Card = ({ id, title, onHover, src }) => {
     >
       <LocationImage src={src} />
       <Text
+        as="p"
         fontSize={FONT_SIZE.L}
         fontWeight={FONT_WEIGHT.BOLD}
         color={COLOR.BLACK}

@@ -28,4 +28,10 @@ export const MOCK_VENUES_DATA = [
     coordinates: { lat: 59.3369241797981, lon: 18.068564023967703 },
     src: 'https://media.timeout.com/images/105237902/image.jpg',
   },
+  {
+    id: 5,
+    title: 'Västerås',
+    coordinates: { lat: 59.613981697602505, lon: 16.545432509139218 },
+    src: 'https://cdn.britannica.com/15/146615-050-A7D0BA8D/Vasteras-Swed.jpg',
+  },
 ]

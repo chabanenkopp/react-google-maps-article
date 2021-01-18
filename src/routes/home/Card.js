@@ -33,7 +33,6 @@ const Card = ({ id, title, onHover, src }) => {
     >
       <LocationImage src={src} />
       <Text
-        display="inline-block"
         fontSize={FONT_SIZE.L}
         fontWeight={FONT_WEIGHT.BOLD}
         color={COLOR.BLACK}

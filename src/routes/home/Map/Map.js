@@ -9,12 +9,12 @@ import {
   withGoogleMap,
   DirectionsRenderer,
 } from 'react-google-maps'
-import airportIcon from 'images/airport.png'
-import venueIconActive from 'images/venue-marker-active.png'
-import venueIconInactive from 'images/venue-marker-inactive.png'
+import heartIcon from 'images/heart.png'
+import infoIconActive from 'images/info-active.png'
+import infoIconInactive from 'images/info-inactive.png'
 import { MAP_SETTINGS } from 'constants/constants'
 import InfoWindowContent from './InfoWindow'
-import style from './mapStyles.json'
+import mapStyles from './mapStyles.json'
 
 const {
   DEFAULT_ZOOM,
@@ -85,7 +85,6 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
         const selectedOrHoveredVenue = origins.find(
           ({ id }) => selectedOrHoveredOriginId === id
         )
-        const { coordinates } = selectedOrHoveredVenue
         const tempDirectionsToVenue = []
         // eslint-disable-next-line no-restricted-syntax
         for (const destination of destinations) {
@@ -93,10 +92,13 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           const direction = await directionsRequest({
             DirectionsService,
             origin: {
+              lat: selectedOrHoveredVenue.coordinates.lat,
+              lon: selectedOrHoveredVenue.coordinates.lon,
+            },
+            destination: {
               lat: destination.coordinates.lat,
               lon: destination.coordinates.lon,
             },
-            destination: { lat: coordinates.lat, lon: coordinates.lon },
           })
           // eslint-disable-next-line no-await-in-loop
           await delay(300)
@@ -118,10 +120,10 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
   const selectedVenue = origins.find(({ id }) => selectedOriginId === id)
   return (
     <GoogleMap
+      ref={mapRef}
       defaultZoom={DEFAULT_ZOOM}
       defaultCenter={DEFAULT_CENTER}
-      defaultOptions={{ ...DEFAULT_MAP_OPTIONS, styles: style }}
-      ref={mapRef}
+      defaultOptions={{ ...DEFAULT_MAP_OPTIONS, styles: mapStyles }}
       onDragStart={() => setIsClickOutsideDisabled(true)}
       onDragEnd={() => setIsClickOutsideDisabled(false)}
     >
@@ -132,8 +134,8 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           icon={{
             url:
               id === selectedOrHoveredOriginId
-                ? venueIconActive
-                : venueIconInactive,
+                ? infoIconActive
+                : infoIconInactive,
             scaledSize: new window.google.maps.Size(
               MARKER_SIZE.SMALL,
               MARKER_SIZE.SMALL
@@ -149,7 +151,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           key={i}
           position={{ lat, lng }}
           icon={{
-            url: airportIcon,
+            url: heartIcon,
             scaledSize: new window.google.maps.Size(
               MARKER_SIZE.SMALL,
               MARKER_SIZE.SMALL

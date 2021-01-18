@@ -6,27 +6,10 @@ export const fontStack = `Poppins, Telegraf, system-ui, -apple-system, 'Segoe UI
 
 export const COLOR = {
   WHITE: '#FFFFFF',
-  WHITE_25: transparentize(0.25, '#FFFFFF'),
-  WHITE_30: transparentize(0.3, '#FFFFFF'),
-  WHITE_50: transparentize(0.5, '#FFFFFF'),
   BLACK: '#000',
-  EXISTENTIAL_ANGST: '#0A0A0A',
-  DUSK_ORANGE: '#FF4D42',
-  DUSK_ORANGE_20: transparentize(0.2, '#FF4D42'),
-  DUSK_ORANGE_40: transparentize(0.4, '#FF4D42'),
-  ZHEN_ZHU_BAI_PEARL: '#f8fafc',
-  ZHEN_ZHU_BAI_PEARL_90: transparentize(0.9, '#f8fafc'),
-  ZHEN_ZHU_BAI_PEARL_92: transparentize(0.92, '#f8fafc'),
-}
-
-export const GRADIENT = {
-  ICON_TEXT_CIRCLE: `135deg, ${
-    COLOR.ZHEN_ZHU_BAI_PEARL_90
-  } 0%, ${transparentize(1, COLOR.ZHEN_ZHU_BAI_PEARL)} 100%`,
-  COURSE_CARD: `135deg, ${COLOR.ZHEN_ZHU_BAI_PEARL_92} 0%, ${transparentize(
-    1,
-    COLOR.ZHEN_ZHU_BAI_PEARL
-  )} 100%`,
+  BLUEBERRY_SODA: '#8591A5',
+  EXPLORATION_GREEN: '#58A55D',
+  LYNX_WHITE: '#F8F8F8' /* 5 Grey */,
 }
 
 export const SPACE = {
@@ -117,7 +100,7 @@ export const GlobalStyles = createGlobalStyle`
     min-width: 320px;
     margin: 0;
     color: ${COLOR.WHITE};
-    background-color: ${COLOR.EXISTENTIAL_ANGST};
+    background-color: ${COLOR.WHITE};
   }
   html {
     ${fluidRange(

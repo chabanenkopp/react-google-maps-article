@@ -4,18 +4,15 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles, theme } from 'Theme'
-import FeedbackMessageProvider from 'utils/FeedbackMessageProvider'
 import localFonts from 'fonts'
 
 const App = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <FeedbackMessageProvider>
-      <Helmet defer={false}>
-        <style>{localFonts}</style>
-      </Helmet>
-      <GlobalStyles />
-      {children}
-    </FeedbackMessageProvider>
+    <Helmet defer={false}>
+      <style>{localFonts}</style>
+    </Helmet>
+    <GlobalStyles />
+    {children}
   </ThemeProvider>
 )
 

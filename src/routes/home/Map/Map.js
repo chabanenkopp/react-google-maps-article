@@ -70,7 +70,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
       bounds.extend(new window.google.maps.LatLng(lat, lon))
     })
     mapRef.current.fitBounds(bounds)
-  }, [destinations, origins, selectedOrHoveredOriginId])
+  }, [destinations, origins])
   React.useEffect(() => {
     if (hoveredOriginId) {
       setSelectedOriginId(null)
@@ -204,7 +204,7 @@ MapContainer.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
-  hoveredOriginId: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  hoveredOriginId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   destinations: PropTypes.arrayOf(
     PropTypes.shape({
       coordinates: PropTypes.shape({

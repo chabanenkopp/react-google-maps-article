@@ -5,7 +5,7 @@ import Layout from './Layout'
 import { MOCK_VENUES_DATA, MOCK_DESTINATIONS_DATA } from './data'
 
 const ListMapSection = () => {
-  const [hoveredVenueId, setHoveredVenueId] = React.useState(null)
+  const [hoveredOriginId, setHoveredOriginId] = React.useState(null)
   return (
     <Layout
       listContent={
@@ -13,7 +13,7 @@ const ListMapSection = () => {
           {MOCK_VENUES_DATA.map((venueData) => (
             <Card
               key={venueData.id}
-              onHover={setHoveredVenueId}
+              onHover={setHoveredOriginId}
               {...venueData}
             />
           ))}
@@ -24,7 +24,7 @@ const ListMapSection = () => {
           <Map
             origins={MOCK_VENUES_DATA}
             destinations={MOCK_DESTINATIONS_DATA}
-            hoveredOriginId={hoveredVenueId}
+            hoveredOriginId={hoveredOriginId}
           />
         </Layout.Map>
       }

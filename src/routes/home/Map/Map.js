@@ -117,7 +117,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
     selectedOrHoveredOriginId,
     origins,
   ])
-  const selectedVenue = origins.find(({ id }) => selectedOriginId === id)
+  const selectedOrigin = origins.find(({ id }) => selectedOriginId === id)
   return (
     <GoogleMap
       ref={mapRef}
@@ -159,11 +159,11 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           }}
         />
       ))}
-      {selectedVenue && (
+      {selectedOrigin && (
         <InfoWindow
           position={{
-            lat: selectedVenue.coordinates.lat,
-            lng: selectedVenue.coordinates.lon,
+            lat: selectedOrigin.coordinates.lat,
+            lng: selectedOrigin.coordinates.lon,
           }}
           options={{
             pixelOffset: new window.google.maps.Size(
@@ -178,7 +178,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
             }}
             disabled={isClickOutsideDisabled}
           >
-            <InfoWindowContent {...selectedVenue} />
+            <InfoWindowContent {...selectedOrigin} />
           </OutsideClickHandler>
         </InfoWindow>
       )}

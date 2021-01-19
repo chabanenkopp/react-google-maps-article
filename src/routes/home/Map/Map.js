@@ -204,7 +204,7 @@ MapContainer.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
-  hoveredOriginId: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  hoveredOriginId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   destinations: PropTypes.arrayOf(
     PropTypes.shape({
       coordinates: PropTypes.shape({

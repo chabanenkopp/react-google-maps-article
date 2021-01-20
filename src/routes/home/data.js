@@ -14,7 +14,7 @@ export const MOCK_DESTINATIONS_DATA = [
       'https://i0.wp.com/www.afterschoolafrica.com/wp-content/uploads/2016/05/dalarnyuniversity4.jpg?fit=1024%2C682&ssl=1',
   },
 ]
-export const MOCK_VENUES_DATA = [
+export const MOCK_ORIGINS_DATA = [
   {
     id: 3,
     title: 'Uppsala',

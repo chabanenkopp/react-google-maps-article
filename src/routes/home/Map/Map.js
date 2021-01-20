@@ -82,18 +82,18 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
     if (selectedOrHoveredOriginId && !directionsToSelectedOrHoveredOrigin) {
       const DirectionsService = new window.google.maps.DirectionsService()
       const fetchDirections = async () => {
-        const selectedOrHoveredVenue = origins.find(
+        const selectedOrHoveredOrigin = origins.find(
           ({ id }) => selectedOrHoveredOriginId === id
         )
-        const tempDirectionsToVenue = []
+        const tempDirectionsToOrigin = []
         // eslint-disable-next-line no-restricted-syntax
         for (const destination of destinations) {
           // eslint-disable-next-line no-await-in-loop
           const direction = await directionsRequest({
             DirectionsService,
             origin: {
-              lat: selectedOrHoveredVenue.coordinates.lat,
-              lon: selectedOrHoveredVenue.coordinates.lon,
+              lat: selectedOrHoveredOrigin.coordinates.lat,
+              lon: selectedOrHoveredOrigin.coordinates.lon,
             },
             destination: {
               lat: destination.coordinates.lat,
@@ -102,11 +102,11 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           })
           // eslint-disable-next-line no-await-in-loop
           await delay(300)
-          tempDirectionsToVenue.push(direction)
+          tempDirectionsToOrigin.push(direction)
         }
         setDirections((prevState) => ({
           ...prevState,
-          [selectedOrHoveredOriginId]: tempDirectionsToVenue,
+          [selectedOrHoveredOriginId]: tempDirectionsToOrigin,
         }))
       }
       fetchDirections()

@@ -30,6 +30,8 @@
   "rules": {
     "semi": [2, "never"],
     "arrow-body-style": ["error", "as-needed"],
+    "no-restricted-syntax": 0,
+    "eslint-disable-next-line no-await-in-loop": true,
     "react/jsx-wrap-multilines": [
       1,
       {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { rem } from 'polished'
-import { COLOR, SPACE, FONT_SIZE, FONT_WEIGHT, mq } from 'Theme'
+import { COLOR, SPACE, FONT_SIZE, FONT_WEIGHT } from 'Theme'
 import { useDebouncedCallback } from 'use-debounce'
 import { Text } from 'components/Typography'
 import { Box } from 'components/Layout'
@@ -11,9 +11,6 @@ const DURATION = 400
 
 const LocationImage = styled('div')`
   height: ${rem(200)};
-  ${mq.to.M`
-    height: ${rem(320)};
-  `}
   ${({ src }) => `
      background: url("${src}") center / cover no-repeat;
   `}

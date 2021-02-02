@@ -2,39 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { rem } from 'polished'
-import { mq, SPACE } from 'Theme'
+import { SPACE } from 'Theme'
 import { Flex } from 'components/Layout'
 
 const ListWrapper = styled('div')`
-  min-width: 0;
   flex: 1;
-  ${mq.from.M`
-    width: 50%;
-  `}
-  ${mq.from.L`
-    max-width: calc(
-      ${({ contentWidth }) => contentWidth} + ${rem('144px')}
-    );
-  `}
+  min-width: 0;
+  max-width: ${({ contentWidth }) => contentWidth};
 `
 
 const List = styled('div')`
   width: 100%;
   margin-left: auto;
   padding: 0 ${SPACE.M} ${SPACE.M} ${SPACE.M};
-  ${mq.from.L`
-    max-width: ${({ contentWidth }) => contentWidth};
-  `}
+  max-width: ${({ contentWidth }) => contentWidth};
 `
 
 const Map = styled('aside')`
   flex: 1;
-  ${mq.to.M`
-    z-index: -1;
-    visibility: hidden;
-    position: absolute;
-    width: 100%;
-  `}
 `
 
 const Layout = ({ mapContent, listContent, contentWidth }) => (

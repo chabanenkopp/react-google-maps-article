@@ -86,9 +86,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           ({ id }) => selectedOrHoveredOriginId === id
         )
         const tempDirectionsToOrigin = []
-        // eslint-disable-next-line no-restricted-syntax
         for (const destination of destinations) {
-          // eslint-disable-next-line no-await-in-loop
           const direction = await directionsRequest({
             DirectionsService,
             origin: {
@@ -100,7 +98,6 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
               lon: destination.coordinates.lon,
             },
           })
-          // eslint-disable-next-line no-await-in-loop
           await delay(300)
           tempDirectionsToOrigin.push(direction)
         }
@@ -146,9 +143,9 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           }}
         />
       ))}
-      {destinations.map(({ coordinates: { lat, lon: lng } }, i) => (
+      {destinations.map(({ coordinates: { lat, lon: lng }, id }) => (
         <Marker
-          key={i}
+          key={id}
           position={{ lat, lng }}
           icon={{
             url: heartIcon,

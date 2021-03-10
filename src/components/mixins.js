@@ -5,15 +5,6 @@ import { mq, SPACE, MAX_CONTENT_WIDTH } from 'Theme'
 export const GUTTER = SPACE.L
 export const SMALL_GUTTER = SPACE.M
 
-export const fullWidthStyle = `
-  position: relative;
-  left: 50%;
-  right: 50%;
-  width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
-`
-
 export const maxWidthStyle = css`
   padding-left: ${GUTTER};
   padding-right: ${GUTTER};

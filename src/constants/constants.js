@@ -9,19 +9,11 @@ export const MAP_SETTINGS = {
   },
   DEFAULT_CENTER: { lat: 57, lng: 20 },
   DEFAULT_ZOOM: 4,
-  MARKER_SIZE: {
-    EXTRA_SMALL: 10,
-    SMALL: 30,
-    MEDIUM: 40,
-  },
+  MARKER_SIZE: 35,
   PIXEL_OFFSET: {
     MARKER: {
       X: 0,
       Y: -35,
-    },
-    LINE: {
-      X: 0,
-      Y: 20,
     },
   },
   DIRECTIONS_OPTIONS: { suppressMarkers: true, preserveViewport: true },

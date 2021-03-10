@@ -4,8 +4,7 @@ import styled from 'styled-components/macro'
 import { rem } from 'polished'
 import { Text } from 'components/Typography'
 import { Box } from 'components/Layout'
-import { TitleWrapper } from 'routes/home/Card'
-import { COLOR, FONT_SIZE, FONT_WEIGHT } from 'Theme'
+import { COLOR, SPACE, FONT_SIZE, FONT_WEIGHT } from 'Theme'
 
 const MAX_WIDTH = rem(240)
 
@@ -18,16 +17,14 @@ const LocationImage = styled('img')`
 const InfoWindow = ({ title, src }) => (
   <Box maxWidth={MAX_WIDTH}>
     <LocationImage src={src} />
-    <Box position="absolute" bottom={0}>
-      <TitleWrapper>
-        <Text
-          fontSize={FONT_SIZE.L}
-          fontWeight={FONT_WEIGHT.SEMI_BOLD}
-          color={COLOR.BLACK}
-        >
-          {title}
-        </Text>
-      </TitleWrapper>
+    <Box m={SPACE.M}>
+      <Text
+        fontSize={FONT_SIZE.L}
+        fontWeight={FONT_WEIGHT.SEMI_BOLD}
+        color={COLOR.BLACK}
+      >
+        {title}
+      </Text>
     </Box>
   </Box>
 )

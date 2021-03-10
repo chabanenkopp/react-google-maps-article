@@ -10,8 +10,8 @@ import {
   DirectionsRenderer,
 } from 'react-google-maps'
 import heartIcon from 'images/heart.png'
-import locationIconActive from 'images/location-active.png'
-import locationIconInactive from 'images/location-inactive.png'
+import infoIconActive from 'images/info-active.png'
+import infoIconInactive from 'images/info-inactive.png'
 import { MAP_SETTINGS } from 'constants/constants'
 import InfoWindowContent from './InfoWindow'
 import mapStyles from './mapStyles.json'
@@ -24,7 +24,6 @@ const {
   PIXEL_OFFSET,
   DIRECTIONS_OPTIONS,
 } = MAP_SETTINGS
-const DIRECTION_REQUEST_DELAY = 300
 
 const delay = (time) =>
   new Promise((resolve) => {
@@ -99,7 +98,7 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
               lon: destination.coordinates.lon,
             },
           })
-          await delay(DIRECTION_REQUEST_DELAY)
+          await delay(300)
           tempDirectionsToOrigin.push(direction)
         }
         setDirections((prevState) => ({
@@ -132,9 +131,12 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           icon={{
             url:
               id === selectedOrHoveredOriginId
-                ? locationIconActive
-                : locationIconInactive,
-            scaledSize: new window.google.maps.Size(MARKER_SIZE, MARKER_SIZE),
+                ? infoIconActive
+                : infoIconInactive,
+            scaledSize: new window.google.maps.Size(
+              MARKER_SIZE.SMALL,
+              MARKER_SIZE.SMALL
+            ),
           }}
           onClick={() => {
             setSelectedOriginId(id)
@@ -147,7 +149,10 @@ const MapContainer = ({ origins, destinations, hoveredOriginId }) => {
           position={{ lat, lng }}
           icon={{
             url: heartIcon,
-            scaledSize: new window.google.maps.Size(MARKER_SIZE, MARKER_SIZE),
+            scaledSize: new window.google.maps.Size(
+              MARKER_SIZE.SMALL,
+              MARKER_SIZE.SMALL
+            ),
           }}
         />
       ))}
@@ -196,6 +201,7 @@ MapContainer.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
+  hoveredOriginId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   destinations: PropTypes.arrayOf(
     PropTypes.shape({
       coordinates: PropTypes.shape({
@@ -204,7 +210,6 @@ MapContainer.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
-  hoveredOriginId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 }
 
 export default withScriptjs(withGoogleMap(MapContainer))
